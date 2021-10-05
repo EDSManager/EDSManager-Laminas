@@ -30,9 +30,14 @@ LoadModule rewrite_module modules/mod_rewrite.so
 for windows-version add support PHP:
 
 ```apache conf/httpd.conf:
-PHPIniDir "C:/php-8"
-AddHandler application/x-httpd-php .php
-LoadModule php_module "C:/php-8/php8apache2_4.dll"
+
+# before PHP 8.0.0 the name of the module was php7_module
+LoadModule php7_module "C:\php\php7.4.24\php7apache2_4.dll"
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
+# configure the path to php.ini
+PHPIniDir "C:/php/php7.4.24"
 
 ```
 
