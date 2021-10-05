@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Added
 
 - Install clear Laminas MVC Skeleton Application.
+- Add:    'DoctrineModule',
+          'DoctrineORMModule',
 
 ### Changed
 
