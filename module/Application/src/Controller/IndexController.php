@@ -13,4 +13,17 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function aboutAction()
+    {
+        $appName = 'EDSManager';
+        $appDescription = 'Description Application EDSManager...';
+
+        // Возвращает переменные скрипту представления с помощью
+        // переменной-контейнера ViewModel
+        return new ViewModel([
+            'appName' => $appName,
+            'appDescription' => $appDescription
+        ]);
+    }
 }
