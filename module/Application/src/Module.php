@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Application;
 
+use Laminas\Mvc\MvcEvent;
+use Laminas\Session\SessionManager;
+
 class Module
 {
 
@@ -15,4 +18,20 @@ class Module
         $config = include __DIR__ . '/../config/module.config.php';
         return $config;
     }
+
+    /**
+     * Этот метод вызывается по завершении самозагрузки MVC.
+     */
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        $application = $event->getApplication();
+        $serviceManager = $application->getServiceManager();
+
+        // Следующая строка инстанцирует SessionManager и автоматически
+        // делает его выбираемым 'по умолчанию'.
+        //@TODO раскомментировать ниже строку для включения сессий
+       // $sessionManager = $serviceManager->get(SessionManager::class);
+    }
+
 }
