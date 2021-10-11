@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file, in reverse 
 	laminas-authentication
 	laminas-crypt
 	laminas-math
+	laminas-session
 
 
 ### Changed
