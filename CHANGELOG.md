@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.0.0 - Begin EDS Manager
+## 0.0.1 - Begin EDS Manager
 
 ### Added
 
 - Install clear Laminas MVC Skeleton Application.
-- Add:    'DoctrineModule',
-          'DoctrineORMModule',
+- Add:  DoctrineModule
+        DoctrineORMModule
+	laminas-authentication
+	laminas-crypt
+	laminas-math
+
 
 ### Changed
 

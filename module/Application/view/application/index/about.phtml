@@ -3,18 +3,14 @@ $this->headTitle('About');
 ?>
 
 <div class="jumbotron">
-    <h2>EDS Manager</h2>
+    <h2><?= $this->escapeHtml($appName); ?></h2>
     <p>
-    Версия 0.0.0.
+    Версия: <?= $this->escapeHtml($appVersion); ?>.
     </p>
 
     <hr class="my-4">
 
     <p>
-    Application name: <?= $this->escapeHtml($appName); ?>
-    </p>
-
-    <p>
-    Application description: <?= $this->escapeHtml($appDescription); ?>.
+    <?= $this->escapeHtml($appDescription); ?>.
     </p>
 </div>

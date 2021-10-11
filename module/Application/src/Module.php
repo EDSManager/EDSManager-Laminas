@@ -6,6 +6,9 @@ namespace Application;
 
 class Module
 {
+
+    const VERSION = '0.0.1-dev';
+
     public function getConfig(): array
     {
         /** @var array $config */
