@@ -22,7 +22,6 @@ class Module
     /**
      * Этот метод вызывается по завершении самозагрузки MVC.
      */
-
     public function onBootstrap(MvcEvent $event)
     {
         $application = $event->getApplication();
@@ -30,8 +29,8 @@ class Module
 
         // Следующая строка инстанцирует SessionManager и автоматически
         // делает его выбираемым 'по умолчанию'.
-        //@TODO раскомментировать ниже строку для включения сессий
-        //$sessionManager = $serviceManager->get(SessionManager::class);
+        $sessionManager = $serviceManager->get(SessionManager::class);
+
     }
 
 }
