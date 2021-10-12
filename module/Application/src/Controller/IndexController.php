@@ -23,7 +23,7 @@ class IndexController extends AbstractActionController
     {
 
 
-        $appName = 'EDSManager';
+        $appName = 'EDS Manager';
         $appDescription = 'Description Application EDSManager...';
 
         // Возвращает переменные скрипту представления с помощью
