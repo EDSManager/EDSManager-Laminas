@@ -18,10 +18,4 @@ class UserController extends AbstractActionController
 
     }
 
-    public function loginAction()
-    {
-
-        return new ViewModel();
-
-    }
 }
