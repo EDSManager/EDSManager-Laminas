@@ -9,7 +9,7 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
 
-class UserController extends AbstractActionController
+class AuthController extends AbstractActionController
 {
     public function indexAction()
     {

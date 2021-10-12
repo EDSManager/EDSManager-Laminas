@@ -13,7 +13,7 @@ return [
                 'options' => [
                     'route'    => '/login',
                     'defaults' => [
-                        'controller' => Controller\UserController::class,
+                        'controller' => Controller\AuthController::class,
                         'action'     => 'login',
                     ],
                 ],
@@ -23,6 +23,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\UserController::class => InvokableFactory::class,
+            Controller\AuthController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
