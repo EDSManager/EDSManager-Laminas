@@ -31,7 +31,7 @@ class Module
         // Следующая строка инстанцирует SessionManager и автоматически
         // делает его выбираемым 'по умолчанию'.
         //@TODO раскомментировать ниже строку для включения сессий
-       // $sessionManager = $serviceManager->get(SessionManager::class);
+        //$sessionManager = $serviceManager->get(SessionManager::class);
     }
 
 }
