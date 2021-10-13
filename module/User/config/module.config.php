@@ -31,6 +31,20 @@ return [
                     ],
                 ],
             ],
+            'users' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/users[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\UserController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -47,6 +61,19 @@ return [
         'aliases' => [
             'currentUser' => Controller\Plugin\CurrentUserPlugin::class,
         ],
+    ],
+    // The 'access_filter' key is used by the User module to restrict or permit
+    // access to certain controller actions for unauthorized visitors.
+    'access_filter' => [
+        'controllers' => [
+            Controller\UserController::class => [
+                // Give access to "resetPassword", "message" and "setPassword" actions
+                // to anyone.
+                ['actions' => ['resetPassword', 'message', 'setPassword'], 'allow' => '*'],
+                // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
+                ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
+            ],
+        ]
     ],
     'service_manager' => [
         'factories' => [

@@ -22,7 +22,7 @@ class LoginForm extends Form
         $this->setAttribute('method', 'post');
                 
         $this->addElements();
-        $this->addInputFilter();          
+        $this->addInputFilter();
     }
     
     /**
@@ -30,7 +30,7 @@ class LoginForm extends Form
      */
     protected function addElements() 
     {
-        // Add "email" field
+        // Add "login" field
         $this->add([            
             'type'  => 'text',
             'name' => 'login',

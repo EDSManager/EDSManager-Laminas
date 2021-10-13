@@ -18,7 +18,7 @@ class CurrentUserPlugin extends AbstractPlugin
     
     /**
      * Authentication service.
-     * @var Zend\Authentication\AuthenticationService 
+     * @var Laminas\Authentication\AuthenticationService
      */
     private $authService;
     
@@ -58,7 +58,7 @@ class CurrentUserPlugin extends AbstractPlugin
             if ($this->user==null) {
                 // Oops.. the identity presents in session, but there is no such user in database.
                 // We throw an exception, because this is a possible security problem. 
-                throw new \Exception('Not found user with such email');
+                throw new \Exception('Not found user with such login');
             }
             
             // Return found User.

@@ -22,7 +22,8 @@
         "laminas/laminas-session": "^2.12",
         "doctrine/orm": "^2.10",
         "doctrine/dbal": "2.*",
-        "laminas/laminas-mvc-plugins": "^1.1"
+        "laminas/laminas-mvc-plugins": "^1.1",
+        "laminas/laminas-i18n": "^2.11"
     },
     "autoload": {
         "psr-4": {

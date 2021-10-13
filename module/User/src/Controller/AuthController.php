@@ -65,6 +65,7 @@ class AuthController extends AbstractActionController
         $form = new LoginForm();
         $form->get('redirect_url')->setValue($redirectUrl);
 
+
         // Храним статус входа на сайт.
         $isLoginError = false;
 
@@ -75,6 +76,7 @@ class AuthController extends AbstractActionController
             $data = $this->params()->fromPost();
 
             $form->setData($data);
+
 
             // Валидируем форму
             if($form->isValid()) {
@@ -115,6 +117,12 @@ class AuthController extends AbstractActionController
                 $isLoginError = true;
             }
         }
+
+        return new ViewModel([
+            'form' => $form,
+            'isLoginError' => $isLoginError,
+            'redirectUrl' => $redirectUrl
+        ]);
 
     }
 

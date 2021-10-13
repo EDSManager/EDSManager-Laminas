@@ -77,7 +77,7 @@ class UserManager
      */
     public function updateUser($user, $data) 
     {
-        // Do not allow to change user email if another user with such email already exits.
+        // Do not allow to change user login if another user with such login already exits.
         if($user->getLogin()!=$data['login'] && $this->checkUserExists($data['login'])) {
             throw new \Exception("Another user with login " . $data['login'] . " already exists");
         }
@@ -93,7 +93,7 @@ class UserManager
     
     /**
      * This method checks if at least one user presents, and if not, creates 
-     * 'Admin' user with email 'admin@example.com' and password 'Secur1ty'. 
+     * 'Admin' user with login 'admin' and password 'admin'.
      */
     public function createAdminUserIfNotExists()
     {
@@ -113,7 +113,7 @@ class UserManager
     }
     
     /**
-     * Checks whether an active user with given email address already exists in the database.     
+     * Checks whether an active user with given login already exists in the database.
      */
     public function checkUserExists($login) {
         
