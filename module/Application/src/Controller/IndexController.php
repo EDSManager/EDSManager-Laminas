@@ -22,9 +22,8 @@ class IndexController extends AbstractActionController
     public function aboutAction()
     {
 
-
         $appName = 'EDS Manager';
-        $appDescription = 'Description Application EDSManager...';
+        $appDescription = 'Краткое описание приложения EDS Manager.';
 
         // Возвращает переменные скрипту представления с помощью
         // переменной-контейнера ViewModel
