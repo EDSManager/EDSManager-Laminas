@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Этот класс представляет собой зарегистрированного пользователя.
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="\User\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
 class User

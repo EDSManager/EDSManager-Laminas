@@ -21,7 +21,8 @@
         "laminas/laminas-authentication": "^2.8",
         "laminas/laminas-session": "^2.12",
         "doctrine/orm": "^2.10",
-        "doctrine/dbal": "2.*"
+        "doctrine/dbal": "2.*",
+        "laminas/laminas-mvc-plugins": "^1.1"
     },
     "autoload": {
         "psr-4": {
