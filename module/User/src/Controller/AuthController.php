@@ -88,6 +88,7 @@ class AuthController extends AbstractActionController
                 $result = $this->authManager->login($data['login'],
                     $data['password'], $data['remember_me']);
 
+
                 // Проверяем результат.
                 if ($result->getCode() == Result::SUCCESS) {
 

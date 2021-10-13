@@ -1,17 +1,64 @@
 <?php
-/**
- * @var Laminas\View\Renderer\PhpRenderer $this
- */
+$this->headTitle('Users');
+
+$this->mainMenu()->setActiveItemId('users');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Manage Users'=>$this->url('users'),
+            ]);
 ?>
-<div class="jumbotron">
-    <h1 class="display-4">Добро пожаловать в<br><a href="<?= $this->url('about', ['action' => 'about']); ?>" >
-            EDS Manager</h1>
 
-    <hr class="my-4">
+<h1>Manage Users</h1>
 
-        <a class="btn btn-primary btn-lg " href="https://github.com/EDSManager/EDSManager-Laminas" target="_blank">
-            EDS Manager на GitHub &raquo;
-        </a>
+<p>
+<a class="btn btn-default" href="
+    <?= $this->url('users', ['action'=>'add']); ?>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New User
+</a>
+</p>
 
-</div>
+<table class="table table-striped">
+
+   <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Date Created</th>
+        <th>Status</th>        
+        <th>Actions</th>        
+    </tr>
+    
+    <?php foreach ($users as $user): ?>
+    
+    <tr>
+        <td><?= $this->escapeHtml($user->getId()); ?></td>
+        <td>
+            <a href="<?= $this->url('users', ['action'=>'view', 'id'=>$user->getId()]); ?>">
+                <?= $this->escapeHtml($user->getLogin()); ?>
+            </a> 
+        </td>
+
+        <td><?= $this->escapeHtml($user->getDateCreated()); ?></td>        
+        <td><?= $this->escapeHtml($user->getStatusAsString()); ?></td>
+        <td>
+            <a class="btn btn-info" href="<?= $this->url('users', 
+                    ['action'=>'edit', 'id'=>$user->getId()]); ?>">
+                <span class="glyphicon glyphicon-pencil" ></span> Edit
+            </a>
+            <a class="btn btn-default" href="<?= $this->url('users',
+                    ['action'=>'change-password', 'id'=>$user->getId()]); ?>">
+                <span class="glyphicon glyphicon-asterisk"></span> Change Password
+            </a>
+        </td>    
+    </tr>
+        
+    <?php endforeach; ?>   
+    
+</table>
+
+<?= $this->paginationControl($users,
+                    'Sliding',
+                    'user/partial/paginator', 
+                    array('route' => 'users')); ?>
+
 

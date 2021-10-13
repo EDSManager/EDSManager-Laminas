@@ -5,6 +5,7 @@ namespace User\Service;
 use Laminas\Authentication\Adapter\AdapterInterface;
 use Laminas\Authentication\Result;
 use Laminas\Crypt\Password\Bcrypt;
+use mysql_xdevapi\Warning;
 use User\Entity\User;
 
 /**
@@ -65,9 +66,9 @@ class AuthAdapter implements AdapterInterface
 
     public function authenticate()
     {
-        // Проверяем, есть ли в базе данных пользователь с таким адресом.
+        // Проверяем, есть ли в базе данных пользователь с таким логином.
         $user = $this->entityManager->getRepository(User::class)
-            ->findOneBy(['login' => $login]);
+            ->findOneBy(array('login' => $login));
 
         // Если такого пользователя нет, возвращаем статус 'Identity Not Found'.
         if ($user == null) {

@@ -30,7 +30,6 @@ $form->get('password')->setAttributes([
             <?php if ($isLoginError): ?>
                 <div class="alert alert-warning" role="alert">
                     Incorrect login and/or password.
-
                 </div>
             <?php endif; ?>
             <?= $this->formLabel($form->get('login')); ?>

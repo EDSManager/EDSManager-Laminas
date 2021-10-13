@@ -117,9 +117,11 @@ class UserManager
      */
     public function checkUserExists($login) {
         
+        // Проверяем, есть ли в базе данных пользователь с таким логином.
         $user = $this->entityManager->getRepository(User::class)
-                ->findOneBy(['login' => $login]);
-        
+            ->findOneBy(array('login' => $login));
+
+
         return $user !== null;
     }
     

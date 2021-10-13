@@ -21,7 +21,7 @@ class CurrentUserPlugin extends AbstractPlugin
      * @var Laminas\Authentication\AuthenticationService
      */
     private $authService;
-    
+
     /**
      * Logged in user.
      * @var User\Entity\User
@@ -52,8 +52,9 @@ class CurrentUserPlugin extends AbstractPlugin
         if ($this->authService->hasIdentity()) {
             
             // Fetch User entity from database.
-            $this->user = $this->entityManager->getRepository(User::class)
-                    ->findOneBy['login' =>($this->authService->getIdentity())];
+            $this->user = $this->entityManager->getRepository(User::class)->findOneBy(array(
+                'login' => $this->authService->getIdentity()
+            ));
 
             if ($this->user==null) {
                 // Oops.. the identity presents in session, but there is no such user in database.
