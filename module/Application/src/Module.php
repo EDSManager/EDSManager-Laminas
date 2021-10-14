@@ -10,7 +10,7 @@ use Laminas\Session\SessionManager;
 class Module
 {
 
-    const VERSION = '0.0.1-dev';
+    const VERSION = '0.0.2-dev';
 
     public function getConfig(): array
     {
