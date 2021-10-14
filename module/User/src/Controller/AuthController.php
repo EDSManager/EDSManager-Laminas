@@ -28,6 +28,12 @@ class AuthController extends AbstractActionController
     private $authManager;
 
     /**
+     * Сервис аутентификации.
+     * @var \Laminas\Authentication\AuthenticationService
+     */
+    private $authService;
+
+    /**
      * Менеджер пользователей.
      * @var User\Service\UserManager
      */
@@ -36,12 +42,18 @@ class AuthController extends AbstractActionController
     /**
      * Конструктор.
      */
-    public function __construct($entityManager, $authManager, $userManager)
+
+    /**
+     * Конструктор.
+     */
+    public function __construct($entityManager, $authManager, $authService, $userManager)
+
+    //public function __construct($entityManager, $authManager, $userManager)
     {
         $this->entityManager = $entityManager;
         $this->authManager = $authManager;
         $this->userManager = $userManager;
-
+        $this->authService = $authService;
     }
 
     /**
@@ -87,7 +99,6 @@ class AuthController extends AbstractActionController
                 // Выполняем попытку входа в систему.
                 $result = $this->authManager->login($data['login'],
                     $data['password'], $data['remember_me']);
-
 
                 // Проверяем результат.
                 if ($result->getCode() == Result::SUCCESS) {

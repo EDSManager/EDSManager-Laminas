@@ -17,8 +17,9 @@ class AuthControllerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $authManager = $container->get(AuthManager::class);
+        $authService = $container->get(\Laminas\Authentication\AuthenticationService::class);
         $userManager = $container->get(UserManager::class);
 
-        return new AuthController($entityManager, $authManager, $userManager);
+        return new AuthController($entityManager, $authManager, $authService, $userManager);
     }
 }

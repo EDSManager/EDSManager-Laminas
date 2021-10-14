@@ -49,7 +49,7 @@ class AuthManager
         if ($this->authService->getIdentity()!=null) {
             throw new \Exception('Already logged in');
         }
-            
+
         // Authenticate with login/password.
         $authAdapter = $this->authService->getAdapter();
         $authAdapter->setLogin($login);

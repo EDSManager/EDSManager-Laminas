@@ -68,7 +68,7 @@ class AuthAdapter implements AdapterInterface
     {
         // Проверяем, есть ли в базе данных пользователь с таким логином.
         $user = $this->entityManager->getRepository(User::class)
-            ->findOneBy(array('login' => $login));
+            ->findOneBy(array('login' => $this->login));
 
         // Если такого пользователя нет, возвращаем статус 'Identity Not Found'.
         if ($user == null) {
