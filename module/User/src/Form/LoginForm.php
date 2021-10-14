@@ -103,7 +103,7 @@ class LoginForm extends Form
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 6,
+                            'min' => 5,
                             'max' => 64
                         ],
                     ],
@@ -120,7 +120,7 @@ class LoginForm extends Form
                     [
                         'name'    => 'StringLength',
                         'options' => [
-                            'min' => 6,
+                            'min' => 5,
                             'max' => 64
                         ],
                     ],

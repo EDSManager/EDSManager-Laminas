@@ -42,10 +42,6 @@ class AuthController extends AbstractActionController
     /**
      * Конструктор.
      */
-
-    /**
-     * Конструктор.
-     */
     public function __construct($entityManager, $authManager, $authService, $userManager)
 
     //public function __construct($entityManager, $authManager, $userManager)
