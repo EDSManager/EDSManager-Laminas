@@ -57,4 +57,22 @@ PHPIniDir "C:/php/php7.4.24"
 </VirtualHost>
 ```
 
+MySQL:
 
+CREATE TABLE user (
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  login varchar(128) NOT NULL UNIQUE KEY,
+  password varchar(128) NOT NULL,
+  status int(11) NOT NULL,
+  date_created datetime NOT NULL,
+  date_last_login datetime,
+  person_id int(11)
+  );
+
+CREATE TABLE person (
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  last_name varchar(128),
+  first_name varchar(128),
+  middle_name varchar(128),
+  email varchar(128)
+  );
