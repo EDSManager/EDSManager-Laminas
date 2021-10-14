@@ -1,9 +1,5 @@
-<?php
-/**
- * @var Laminas\View\Renderer\PhpRenderer $this
- */
-?>
 <?= $this->doctype() ?>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -25,61 +21,62 @@
 ?>
 
         <!-- Scripts -->
-        <?= $this->headScript() ?>
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.5.1.min.js'))
+        ?>
+
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark mb-4" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?= $this->url('home') ?>">
-                        <img src="<?= $this->basePath('img/edsmanager-logo.svg') ?>" alt="EDSManager">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<?= $this->url('home') ?>">
-                                Home <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->url('login') ?>">
-                                Login <span class="sr-only"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->url('about') ?>">
-                                About <span class="sr-only"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-md navbar-dark mb-4" role="navigation">
         <div class="container">
-            <?= $this->content ?>
-            <hr>
-            <footer>
-                <p>
-                    &copy; <?= date('Y') ?>
-                    <a href="https://github.com/EDSManager">EDSManager</a>.
-                </p>
-            </footer>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="<?= $this->url('home') ?>">
+                    <img src="<?= $this->basePath('img/edsmanager-logo.svg') ?>" alt="EDSManager">
+                </a>
+            </div>
         </div>
-        <?= $this->inlineScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery-3.5.1.min.js')) ?>
+
+
+    </nav>
+
+        <div class="row">
+            <div class="col-md-2">
+                <!-- Navigation bar -->
+                <?php
+                // Check if the activeMenuItemId passed to layout view model
+                // and if so, use it for setting active navbar item.
+                if (isset($activeMenuItemId)) {
+                    $this->mainMenu()->setActiveItemId($activeMenuItemId);
+                }
+
+                // Render the navbar
+                echo $this->mainMenu()->render();
+                ?>
+
+            </div>
+            <div class="col-md-10">
+                <!-- Breadcrumbs -->
+                <?= $this->pageBreadcrumbs()->render(); ?>
+
+                <!-- Page content placeholder -->
+                <?= $this->content; ?>
+
+                <hr>
+
+                <footer>
+                    <p>
+                        &copy; <?= date('Y') ?>
+                        <a href="https://github.com/EDSManager">EDSManager</a>.
+                    </p>
+                </footer>
+            </div>
+
+        </div>
+
+    <?= $this->inlineScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery-3.5.1.min.js')) ?>
     </body>
 </html>

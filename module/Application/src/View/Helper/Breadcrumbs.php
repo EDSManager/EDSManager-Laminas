@@ -86,7 +86,7 @@ class Breadcrumbs extends AbstractHelper
         else
             $result .= $escapeHtml($label);
                     
-        $result .= '</li>';
+        $result .= '/</li>';
     
         return $result;
     }

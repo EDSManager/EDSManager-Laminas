@@ -111,5 +111,4 @@ return [
     'session_containers' => [
         'UserContainer'
     ],
-
 ];

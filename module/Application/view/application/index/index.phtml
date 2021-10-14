@@ -1,8 +1,13 @@
 <?php
-/**
- * @var Laminas\View\Renderer\PhpRenderer $this
- */
+$this->headTitle('Welcome');
+
+$this->mainMenu()->setActiveItemId('home');
+
+$this->pageBreadcrumbs()->setItems([
+    'Home'=>$this->url('home')
+]);
 ?>
+
 <div class="jumbotron">
     <h1 class="display-4">Добро пожаловать в<br><a href="<?= $this->url('about', ['action' => 'about']); ?>" >
             EDS Manager</h1>
