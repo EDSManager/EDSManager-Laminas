@@ -8,6 +8,8 @@ use Laminas\Authentication\Result;
 use Laminas\Uri\Uri;
 use User\Form\LoginForm;
 use User\Entity\User;
+use User\Service\UserManager;
+use User\View\Helper\CurrentUser;
 
 /**
  * Этот контроллер отвечает для предоставлению пользователю возможности входа в систему и выхода из нее.
@@ -98,6 +100,15 @@ class AuthController extends AbstractActionController
 
                 // Проверяем результат.
                 if ($result->getCode() == Result::SUCCESS) {
+
+
+                    // Обновялем дату последнего логина
+                    $this->user = $this->entityManager->getRepository(User::class)
+                        ->findOneByLogin($this->authService->getIdentity());
+
+                    $this->user->setDateLastLogin(date('Y-m-d H:i:s'));
+                    $this->entityManager->persist($this->user);
+                    $this->entityManager->flush();
 
                     // Получаем URL перенаправления.
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');

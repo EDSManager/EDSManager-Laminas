@@ -238,9 +238,4 @@ class UserController extends AbstractActionController
         ]);
     }
 
-    public function updateDateLastLoginAction()
-    {
-        echo 'test';
-    }
-
 }

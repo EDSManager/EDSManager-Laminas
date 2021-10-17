@@ -41,5 +41,16 @@ $this->pageBreadcrumbs()->setItems([
                 <td><?= $this->escapeHtml($user->getDateLastLogin()) ?></th>
             </tr>
         </table>
+
+        <a class="btn btn-info" href="<?= $this->url('users',
+            ['action'=>'edit', 'id'=>$user->getId()]); ?>">
+            <span class="glyphicon glyphicon-pencil" ></span> Edit
+        </a>
+
+        <a class="btn btn-info" href="<?= $this->url('users',
+            ['action'=>'change-password', 'id'=>$user->getId()]); ?>">
+            <span class="glyphicon glyphicon-asterisk"></span> Change Password
+        </a>
+
     </div>
 </div>
