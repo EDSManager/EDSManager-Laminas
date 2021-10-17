@@ -60,12 +60,10 @@ class UserExistsValidator extends AbstractValidator
         
         // Get Doctrine entity manager.
         $entityManager = $this->options['entityManager'];
-        
 
         // Проверяем, есть ли в базе данных пользователь с таким логином.
         $user = $entityManager->getRepository(User::class)
-            ->findOneBy(array('login' => $value));
-
+            ->findOneByLogin($value);
 
         if($this->options['user']==null) {
             $isValid = ($user==null);

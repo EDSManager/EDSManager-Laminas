@@ -119,8 +119,7 @@ class UserManager
         
         // Проверяем, есть ли в базе данных пользователь с таким логином.
         $user = $this->entityManager->getRepository(User::class)
-            ->findOneBy(array('login' => $login));
-
+            ->findOneByLogin($login);
 
         return $user !== null;
     }
