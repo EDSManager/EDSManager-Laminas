@@ -3,6 +3,8 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use User\Entity\User;
 
 // id
 // Last_Name - Фамилия
@@ -44,6 +46,20 @@ class Person
      * @ORM\Column(name="email")
      */
     protected $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\User\Entity\User", mappedBy="person")
+     * @ORM\JoinColumn(name="id", referencedColumnName="person_id")
+     */
+    protected $users;
+
+    /**
+     * Конструктор.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * Возвращает ID персоны.
@@ -124,6 +140,23 @@ class Person
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     *
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Возвращает FullName - полное ФИО.
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->lastName .' '. $this->firstName .' '. $this->middleName;
     }
 
 }

@@ -3,7 +3,6 @@ namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Этот класс представляет собой зарегистрированного пользователя.
  * @ORM\Entity(repositoryClass="\User\Repository\UserRepository")
@@ -15,6 +14,12 @@ class User
     // Константы статуса пользователя.
     const STATUS_ACTIVE       = 1; // Активный пользователь.
     const STATUS_RETIRED      = 2; // Заблокированный пользователь.
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\User\Entity\Person", inversedBy="user")
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     */
+    protected $person;
 
     /**
      * @ORM\Id
@@ -176,6 +181,40 @@ class User
     public function setDateLastLogin($dateLastLogin)
     {
         $this->dateLastLogin = $dateLastLogin;
+    }
+
+    /**
+     * Возвращает person_id.
+     * @return int
+     */
+    public function getPersonId()
+    {
+        return $this->personId;
+    }
+
+    /**
+     * Задает person_id.
+     * @param int $personId
+     */
+    public function setPersonId($personId)
+    {
+        $this->personId = $personId;
+    }
+
+    /**
+     * Возвращает связанный person.
+     * @return \User\Entity\Person
+     */
+        public function getPerson()
+    {
+        return $this->person;
+    }
+
+    public function getPersonFullName()
+    {
+        if ($this->getPerson() != null) {
+            return $this->getPerson()->getFullName();
+        } else return '';
     }
 
 }
