@@ -38,7 +38,20 @@
                 </a>
             </div>
             <div>
-                <a class="text-white"> User Login </a>
+                <a class="text-white">
+
+                    <?php
+                    $user = $this->currentUser();
+                        if ($user == !null) {
+                            $cUser = $user->getLogin();
+                            $cPFN = $user->getPersonFullName();
+                            echo $cPFN.' ('.$cUser.')';
+                        } else {
+                            echo 'Log in';
+                        }
+                    ?>
+
+                </a>
             </div>
 
         </div>
