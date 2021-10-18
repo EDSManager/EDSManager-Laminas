@@ -210,10 +210,19 @@ class User
         return $this->person;
     }
 
+    // Возвращает полное ФИО связанной записи из person
     public function getPersonFullName()
     {
         if ($this->getPerson() != null) {
             return $this->getPerson()->getFullName();
+        } else return '';
+    }
+
+    // Возвращает e-mail связанной записи из person
+    public function getPersonEmail()
+    {
+        if ($this->getPerson() != null) {
+            return $this->getPerson()->getEmail();
         } else return '';
     }
 

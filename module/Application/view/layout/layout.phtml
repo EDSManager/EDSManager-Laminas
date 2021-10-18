@@ -41,6 +41,7 @@
                 <a class="text-white">
 
                     <?php
+                    //@TODO: Нужно это вынести в helper
                     $user = $this->currentUser();
                         if ($user == !null) {
                             $cUser = $user->getLogin();

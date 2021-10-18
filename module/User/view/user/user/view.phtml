@@ -40,6 +40,23 @@ $this->pageBreadcrumbs()->setItems([
                 <th>Date Last Login:</th>
                 <td><?= $this->escapeHtml($user->getDateLastLogin()) ?></th>
             </tr>
+            <tr>
+                <th>Person ID:</th>
+                <td><?= $this->escapeHtml($user->getPersonId()) ?></th>
+            </tr>
+
+            <tr>
+                <th>Person Full Name:</th>
+                <td><?= $this->escapeHtml($user->getPersonFullName()) ?></th>
+            </tr>
+
+            <tr>
+                <th>Person E-Mail:</th>
+                <td><?= $this->escapeHtml($user->getPersonEmail()) ?></th>
+            </tr>
+
+
+
         </table>
 
         <a class="btn btn-info" href="<?= $this->url('users',
