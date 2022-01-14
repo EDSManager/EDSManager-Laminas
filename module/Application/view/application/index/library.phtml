@@ -1,0 +1,23 @@
+<?php
+$this->headTitle('Welcome');
+
+$this->mainMenu()->setActiveItemId('library');
+
+$this->pageBreadcrumbs()->setItems([
+    'Home'=>$this->url('home'),
+    'Library'=>$this->url('library'),
+]);
+?>
+
+<div class="jumbotron">
+
+    <h1 class="display-4">Бибилиотека</h1>
+
+</div>
+
+
+<form action="upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="myfile">
+    <br/>
+    <input type="submit" name="Submit">
+</form>

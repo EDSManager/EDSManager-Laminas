@@ -67,4 +67,9 @@ class IndexController extends AbstractActionController
             'user' => $user
         ]);
     }
+
+    public function libraryAction()
+    {
+        return new ViewModel();
+    }
 }

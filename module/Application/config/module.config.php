@@ -31,6 +31,16 @@ return [
                     ],
                 ],
             ],
+            'library' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/library[/:action]',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'library',
+                    ],
+                ],
+            ],
             'about' => [
                 'type' => Literal::class,
                 'options' => [
@@ -65,7 +75,7 @@ return [
                 // Allow anyone to visit "index" and "about" actions
                 ['actions' => ['index', 'about'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
-                ['actions' => ['settings'], 'allow' => '@']
+                ['actions' => ['settings','library'], 'allow' => '@']
             ],
         ],
     ],

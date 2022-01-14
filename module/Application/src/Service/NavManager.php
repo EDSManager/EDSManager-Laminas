@@ -59,7 +59,20 @@ class NavManager
                 'float' => 'right'
             ];
         } else {
-            
+
+            $items[] = [
+                'id' => 'library',
+                'label' => 'Библиотека',
+                'dropdown' => [
+                    [
+                        'id' => 'users',
+                        'label' => 'Журнал документов',
+                        'link'  => $url('library')
+
+                    ]
+                ]
+            ];
+
             $items[] = [
                 'id' => 'admin',
                 'label' => 'Admin',
