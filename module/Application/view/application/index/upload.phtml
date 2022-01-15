@@ -1,4 +1,7 @@
 <?php
+
+    $form = $this->form;
+
     $form->prepare(); // The correct enctype is set here
     $fileElement = $form->get('document-file');
     echo $this->form()->openTag($form);

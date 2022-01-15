@@ -6,11 +6,11 @@ namespace Application\Controller;
 
 use Application\Form\UploadForm;
 use Application\Module;
-use Laminas\ComponentInstaller\ConfigDiscovery\ApplicationConfig;
-use Laminas\Mvc\Application;
+//use Laminas\ComponentInstaller\ConfigDiscovery\ApplicationConfig;
+//use Laminas\Mvc\Application;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use User\Entity\User;
+//use User\Entity\User;
 
 
 class IndexController extends AbstractActionController
@@ -78,26 +78,41 @@ class IndexController extends AbstractActionController
     // выгрузить один файл на сервер.
     public function uploadAction()
     {
+
+        // Создаем модель формы.
         $form = new UploadForm('upload');
 
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            // Make certain to merge the $_FILES info!
+        // Проверяем, отправил ли пользователь форму.
+        if($this->getRequest()->isPost()) {
+
+
+            // Обязательно объедините информацию о файлах $_FILES!
+            $request = $this->getRequest();
             $post = array_merge_recursive(
                 $request->getPost()->toArray(),
                 $request->getFiles()->toArray()
             );
 
+            // Передаем данные форме.
             $form->setData($post);
-            if ($form->isValid()) {
+
+            // Валидируем форму.
+            if($form->isValid()) {
+
+                // Перемещаем выгруженный файл в его каталог назначения.
                 $data = $form->getData();
 
-                // Form is valid, save the form!
-                return $this->redirect()->toRoute('upload/success');
+                // Перенаправляем пользователя на страницу "Image Gallery".
+
+
+                return $this->redirect()->toRoute('library');
+
             }
         }
 
+
         return ['form' => $form];
+
 
     }
 

@@ -1,7 +1,7 @@
 .vagrant/
 vendor/
 config/development.config.php
-data/cache/*
+/data/cache/*
 !data/cache/.gitkeep
 phpunit.xml
 .phpunit.result.cache
@@ -9,3 +9,4 @@ phpunit.xml
 composer.lock
 /data/DoctrineORMModule/
 /data/DoctrineORMModule/Proxy/
+/data/upload/*
