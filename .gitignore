@@ -8,5 +8,6 @@ phpunit.xml
 .idea
 composer.lock
 /data/DoctrineORMModule/
-/data/DoctrineORMModule/Proxy/
+/data/DoctrineORMModule/Proxy/*
 /data/upload/*
+
