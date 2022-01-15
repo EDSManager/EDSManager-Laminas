@@ -1,0 +1,21 @@
+<?php
+    $form->prepare(); // The correct enctype is set here
+    $fileElement = $form->get('document-file');
+    echo $this->form()->openTag($form);
+?>
+
+<h1>Загрузка файла</h1>
+
+<p>
+    Пожалуйста, выберите файл нажав кнопку <i>Обзор...</i> и отправьте его нажав кнопку <i>Загрузить</i>.
+</p>
+
+    <div class="form-element">
+        <?= $this->formLabel($fileElement) ?>
+        <?= $this->formFile($fileElement) ?>
+        <?= $this->formElementErrors($fileElement) ?>
+    </div>
+
+    <button>Загрузить</button>
+
+<?= $this->form()->closeTag() ?>

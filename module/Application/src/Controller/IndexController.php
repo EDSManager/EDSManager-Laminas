@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Controller;
 
+use Application\Form\UploadForm;
 use Application\Module;
 use Laminas\ComponentInstaller\ConfigDiscovery\ApplicationConfig;
 use Laminas\Mvc\Application;
@@ -72,4 +73,32 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    // Это действие показывает форму выгрузки файлов. Эта страница позволяет
+    // выгрузить один файл на сервер.
+    public function uploadAction()
+    {
+        $form = new UploadForm('upload');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            // Make certain to merge the $_FILES info!
+            $post = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+
+            $form->setData($post);
+            if ($form->isValid()) {
+                $data = $form->getData();
+
+                // Form is valid, save the form!
+                return $this->redirect()->toRoute('upload/success');
+            }
+        }
+
+        return ['form' => $form];
+
+    }
+
 }

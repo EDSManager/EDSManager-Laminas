@@ -37,6 +37,7 @@
                     <img src="<?= $this->basePath('img/edsmanager-logo.svg') ?>" alt="EDSManager">
                 </a>
             </div>
+
             <div>
                 <a class="text-white">
 
@@ -47,15 +48,18 @@
                             $cUser = $user->getLogin();
                             $cPFN = $user->getPersonFullName();
                             echo $cPFN.' ('.$cUser.')';
+
                         } else {
                             echo 'Log in';
                         }
                     ?>
 
                 </a>
+
             </div>
 
         </div>
+
     </nav>
 
         <div class="row">
@@ -74,7 +78,7 @@
 
             </div>
             <div class="col-md-10">
-                <!-- Breadcrumbs -->
+                 <!-- Breadcrumbs -->
                 <?= $this->pageBreadcrumbs()->render(); ?>
 
                 <!-- Page content placeholder -->
@@ -84,7 +88,7 @@
 
                 <footer>
                     <p>
-                        <a href="https://github.com/EDSManager">   &copy; 2021-<?= date('Y') ?> EDSManager</a>.
+                        <a href="https://github.com/EDSManager">   &copy; 2021-<?= date('Y') ?>, EDSManager</a>.
                     </p>
                 </footer>
             </div>
