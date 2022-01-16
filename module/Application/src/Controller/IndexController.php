@@ -103,8 +103,6 @@ class IndexController extends AbstractActionController
                 $data = $form->getData();
 
                 // Перенаправляем пользователя на страницу "Image Gallery".
-
-
                 return $this->redirect()->toRoute('library');
 
             }

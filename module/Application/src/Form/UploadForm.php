@@ -24,6 +24,7 @@ class UploadForm extends Form
         $file = new Element\File('document-file');
         $file->setLabel('Файл для загрузки: ');
         $file->setAttribute('id', 'document-file');
+        //$file->setAttribute('multiple', true);  // Marking as multiple
 
         $this->add($file);
     }
@@ -37,8 +38,19 @@ class UploadForm extends Form
 
         // Добавляем правила валидации для поля "file".
 
+
         $fileInput = new InputFilter\FileInput ('document-file');
-        $fileInput->setRequired(true);
+                $fileInput->setRequired(true);
+
+        // Define validators and filters as if only one file was being uploaded.
+        // All files will be run through the same validators and filters
+        // automatically.
+        $fileInput->getValidatorChain()
+            ->attachByName('filesize',      ['max' => 204800])
+            ->attachByName('filemimetype',  ['mimeType' => 'image/png,image/x-png'])
+            ->attachByName('fileimagesize', ['maxWidth' => 4096, 'maxHeight' => 4096]);
+
+        // All files will be renamed
         $fileInput->getFilterChain()->attachByName(
             'filerenameupload',
             [
