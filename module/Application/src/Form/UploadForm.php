@@ -46,9 +46,9 @@ class UploadForm extends Form
         // All files will be run through the same validators and filters
         // automatically.
         $fileInput->getValidatorChain()
-            ->attachByName('filesize',      ['max' => 204800])
-            ->attachByName('filemimetype',  ['mimeType' => 'image/png,image/x-png'])
-            ->attachByName('fileimagesize', ['maxWidth' => 4096, 'maxHeight' => 4096]);
+            ->attachByName('filesize',      ['max' => 53000000])
+            ->attachByName('filemimetype',  ['mimeType' => 'image/jpeg,image/png,image/x-png'])
+            ->attachByName('fileimagesize', ['maxWidth' => 12000, 'maxHeight' => 12000]);
 
         // All files will be renamed
         $fileInput->getFilterChain()->attachByName(
